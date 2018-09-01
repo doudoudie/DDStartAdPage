@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4pD-Vm-DfE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Jcz-oe-cbg">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="4pD-Vm-DfE" customClass="ViewController" customModule="DCStartPageAdDemo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9fO-hJ-iTh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blr-Sn-Tg9">
+                                <rect key="frame" x="100" y="200" width="175" height="267"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="267" id="B4H-RE-Tf1"/>
+                                </constraints>
+                                <state key="normal" title="主页"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="blr-Sn-Tg9" firstAttribute="leading" secondItem="9fO-hJ-iTh" secondAttribute="leadingMargin" constant="84" id="00F-5Q-EsL"/>
+                            <constraint firstItem="blr-Sn-Tg9" firstAttribute="centerX" secondItem="9fO-hJ-iTh" secondAttribute="centerX" id="CNe-M7-PDa"/>
+                            <constraint firstItem="blr-Sn-Tg9" firstAttribute="centerY" secondItem="9fO-hJ-iTh" secondAttribute="centerY" id="nWY-GC-CkI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yrg-QA-Rrc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OsI-RO-31s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-244" y="74"/>
+        </scene>
+        <!--Guide Page View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="GuidePageViewController" id="BYZ-38-t0r" customClass="GuidePageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sus-JS-Gbq">
+                                <rect key="frame" x="36" y="597" width="303" height="30"/>
+                                <state key="normal" title="开始体验"/>
+                                <connections>
+                                    <action selector="startAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pss-Nq-fWU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Sus-JS-Gbq" secondAttribute="bottom" constant="40" id="0Xn-28-fJt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sus-JS-Gbq" secondAttribute="trailing" constant="20" id="bKg-1B-9O5"/>
+                            <constraint firstItem="Sus-JS-Gbq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ofA-9f-0AA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4IK-HA-I0j"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="75"/>
+        </scene>
+    </scenes>
+</document>
