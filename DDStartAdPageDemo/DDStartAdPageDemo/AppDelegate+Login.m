@@ -31,27 +31,31 @@
             self.window.rootViewController = viewController;
             [self showAdvertisingPage];
         /* }else{
-         
+            //这里执行登录的操作 那么就会出现登录的回调
         }
         */
     }
 }
 
 - (void)showAdvertisingPage{
-    UIWindow *testWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    DDStartAdPageCtrl *VC= [[DDStartAdPageCtrl alloc] init];
-    __weak typeof(VC) weakSelf = VC;
-    VC.adPageSkipBlock = ^{
-        [weakSelf.view removeFromSuperview];
-        self.testWindow.hidden = YES;
-        self.testWindow = nil;
-    };
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    self.testWindow = testWindow;
-    testWindow.windowLevel = UIWindowLevelAlert;
-    testWindow.rootViewController = VC;
-    [testWindow makeKeyAndVisible];
-    [window makeKeyWindow];
+    
+    if(!self.hiddleAd && DDAdHepler.sharedManager.showAdImage) {
+    
+        UIWindow *testWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        DDStartAdPageCtrl *VC= [[DDStartAdPageCtrl alloc] init];
+        __weak typeof(VC) weakSelf = VC;
+        VC.adPageSkipBlock = ^{
+            [weakSelf.view removeFromSuperview];
+            self.AdWindow.hidden = YES;
+            self.AdWindow = nil;
+        };
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        self.AdWindow = testWindow;
+        testWindow.windowLevel = UIWindowLevelAlert;
+        testWindow.rootViewController = VC;
+        [testWindow makeKeyAndVisible];
+        [window makeKeyWindow];
+    }
 }
 
 @end

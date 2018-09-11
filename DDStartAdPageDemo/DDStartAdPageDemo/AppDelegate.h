@@ -12,7 +12,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UIWindow *testWindow;
+@property (strong, nonatomic) UIWindow *AdWindow;
+@property (assign, nonatomic) BOOL hiddleAd;
+
 
 @end
 

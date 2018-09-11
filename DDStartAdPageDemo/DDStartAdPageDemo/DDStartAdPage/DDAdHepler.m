@@ -98,7 +98,7 @@
 - (void)saveAdImage:(NSString *)image_url{
     __block NSInteger retryCount = 0;
     __weak typeof(self) weak_self = self;
-    self.downLoadFinishBlock = ^(BOOL success, id responseObject) {
+    self.downLoadFinishBlock = ^(BOOL success) {
         if(!success){
             retryCount ++;
             if(retryCount <= 3){
@@ -112,23 +112,25 @@
 
 #pragma mark - 下载图片
 // 下载图片
-- (void)downLoadAdImage:(NSString *)url finishHandler:(void(^)(BOOL success,id responseObject))finish{
+- (void)downLoadAdImage:(NSString *)url finishHandler:(void(^)(BOOL success))finish{
     
-    NSString *AdImageDirPath = [self AdImageDirPath];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if(![fileManager fileExistsAtPath:AdImageDirPath]){
-        [fileManager createDirectoryAtPath:AdImageDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    //分装好的请求类来下载图片
-    /*[DCNetWork requestDownloadWithUrlPath:url filePath:AdImageDirPath callBack:^(BOOL success, id responseObject, NSError *error) {
-        if (success) {
-            if (finish) finish(YES, responseObject);
-        } else {
-            if (finish) finish(NO, responseObject);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *AdImageDirPath = [self AdImageDirPath];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if(![fileManager fileExistsAtPath:AdImageDirPath]){
+            [fileManager createDirectoryAtPath:AdImageDirPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
-    }];*/
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        if(data){
+            [data writeToFile:AdImageDirPath atomically:YES];
+        }else{
+            if(finish) finish(NO);
+        }
+   });
 }
+
 
 #pragma mark - 缓存数据路径
 // 初始化数据缓存路径
@@ -146,7 +148,7 @@
 - (NSString *)AdDirPath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *AdDirPath = [paths objectAtIndex:0];
-    return [NSString stringWithFormat:@"%@/DCAd",AdDirPath];
+    return [NSString stringWithFormat:@"%@/DDAd",AdDirPath];
 }
 
 //数据Json路径

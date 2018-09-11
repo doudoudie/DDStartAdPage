@@ -13,7 +13,7 @@
 
 @interface DDAdHepler : NSObject
 
-@property (nonatomic, strong) void(^downLoadFinishBlock)(BOOL cuccess,id responseObject);
+@property (nonatomic, strong) void(^downLoadFinishBlock)(BOOL success);
 
 + (instancetype)sharedManager;
 
